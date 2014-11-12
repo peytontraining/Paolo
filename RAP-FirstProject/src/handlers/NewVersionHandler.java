@@ -1,7 +1,5 @@
 package handlers;
 
-
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -14,6 +12,7 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
@@ -26,7 +25,6 @@ import view.project.TreeViewPart;
 public class NewVersionHandler extends AbstractHandler{
     Version version;
     Equipment equipment;
-    
     
     @Override
     public Object execute(ExecutionEvent event) throws ExecutionException {
@@ -43,6 +41,7 @@ public class NewVersionHandler extends AbstractHandler{
             version = createNewVersion(equipment);
             equipment.getVersions().add(version);
             treeViewPart.treeViewer.refresh();
+            treeViewPart.treeViewer.setSelection(new StructuredSelection(version), true);
         }
         
         if(element instanceof Version){
@@ -52,6 +51,7 @@ public class NewVersionHandler extends AbstractHandler{
             version = createNewVersion(equipment);
             equipment.getVersions().add(version);
             treeViewPart.treeViewer.refresh();
+            treeViewPart.treeViewer.setSelection(new StructuredSelection(version), true);
         }
         return null;
     }
@@ -70,6 +70,4 @@ public class NewVersionHandler extends AbstractHandler{
         newVersion.setTargetVersion("2.x");
         return newVersion;
     }
-    
-    
 }

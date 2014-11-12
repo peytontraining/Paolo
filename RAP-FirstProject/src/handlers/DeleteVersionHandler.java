@@ -5,6 +5,7 @@ import model.EquipmentModel;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IWorkbenchWindow;
@@ -35,8 +36,39 @@ public class DeleteVersionHandler extends AbstractHandler {
             version = (Version) element;
             equipmentModel.deleteVersion(version);
             equipment = version.getEquipment();
-            equipment.removeVersion(version);
-            treeViewPart.treeViewer.refresh();
+            
+            MessageDialog dg = new MessageDialog(
+                    window.getShell(),
+                    "My title",
+                    null,
+                    "Do you want to delete this version?",
+                    MessageDialog.QUESTION_WITH_CANCEL, 
+                    new String[]{
+                        "YES", 
+                        "NO", 
+                        "CANCEL"},
+                    0
+                    );
+//            dg.open();
+            switch(dg.open()) {
+            case 0: 
+                //yes
+                equipment.removeVersion(version);
+                treeViewPart.treeViewer.refresh();
+                System.out.println("yes");
+                break;
+            case 1:
+                //no
+                System.out.println("no");
+                break;
+            case 2:
+                //cancel
+                dg.close();
+                System.out.println("cancel");
+                break;
+            }
+            
+        
         }
         
         if(element instanceof Equipment){

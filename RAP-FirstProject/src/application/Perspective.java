@@ -26,7 +26,7 @@ public class Perspective implements IPerspectiveFactory {
         layout.getViewLayout("RAP-FirstProject.drivers").setCloseable(false);
         layout.getViewLayout("RAP-FirstProject.areas").setCloseable(false);
         
-        IFolderLayout bottomLeft = layout.createFolder( "bottomLeft",IPageLayout.BOTTOM, 0.50f,"topLeft" );
+        IFolderLayout bottomLeft = layout.createFolder( "bottomLeft",IPageLayout.BOTTOM, 0.7f,"topLeft" );
         bottomLeft.addPlaceholder("RAP-FirstProject.projectPropertiesViewPart:*");
         bottomLeft.addView("RAP-FirstProject.VersionPropertiesView");
 //        layout.addStandaloneView("RAP-FirstProject.VersionPropertiesView", false, IPageLayout.BOTTOM,0.6f, "topLeft");

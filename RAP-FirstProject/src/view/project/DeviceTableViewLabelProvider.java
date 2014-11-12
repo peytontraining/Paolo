@@ -18,28 +18,27 @@ public class DeviceTableViewLabelProvider extends LabelProvider implements
     TextField txtFilter;
     public final Image CAMERA_IMAGE = AbstractUIPlugin.imageDescriptorFromPlugin("RAP-FirstProject", "/icons/camera.png").createImage();
     public final Image FIREPLACE_IMAGE = AbstractUIPlugin.imageDescriptorFromPlugin("RAP-FirstProject","/icons/fireplace-controller.png").createImage();
-
     /**
      * The Class ViewContentProvider.
      */
 
     public DeviceTableViewLabelProvider() {
     }
-
+    
     @Override
     public Image getColumnImage(Object element, int columnIndex) {
         Device row = (Device) element;
         if (0 == columnIndex) {
-            if (row.getAppModule().equals("CCTV")) {
+            if ("CCTV".equals(row.getAppModule())) {
                 return CAMERA_IMAGE;
-            } else if (row.getAppModule().equals("FirePlace")) {
+            } 
+            if ("Fireplace".equals(row.getAppModule())) {
                 return FIREPLACE_IMAGE;
             }
         }
-
         return null;
     }
-
+    
     @Override
     public String getColumnText(Object element, int columnIndex) {
         Device row = (Device) element;

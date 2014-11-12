@@ -129,13 +129,14 @@
             restorable="true">
       </view>
       <view
-            class="view.template.DetailDeviceTemplateView"
+            allowMultiple="true"
+            class="view.template.DetailDeviceTemplateView1"
             id="RAP-FirstProject.detailDeviceTemplateView"
             name="Detail Device Template"
             restorable="true">
       </view>
       <view
-            class="view.dialog.NewDeviceView"
+            class="dialog.NewDeviceView"
             id="RAP-FirstProject.newDevice"
             name="New Device"
             restorable="true">

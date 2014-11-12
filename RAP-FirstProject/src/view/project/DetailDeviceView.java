@@ -96,6 +96,7 @@ public class DetailDeviceView extends ViewPart implements ISaveablePart{
     
     private void createToolbar(Composite parent) {
         // Create composite Toolbar and set layout
+        
         Display display = Display.getCurrent();
         Color bgColor = display.getSystemColor(SWT.COLOR_LIST_BACKGROUND);
         newComposite = new Composite(parent, SWT.NONE);
@@ -125,7 +126,7 @@ public class DetailDeviceView extends ViewPart implements ISaveablePart{
                 IWorkbenchWindow window = getSite().getWorkbenchWindow();
                 MessageDialog dg = new MessageDialog(window.getShell(),"Save Resource",null,
                         "Device has been modified. Save changes",MessageDialog.QUESTION_WITH_CANCEL, 
-                        new String[]{"YES", "NO", "CANCEL"},0
+                        new String[]{"YES", "CANCEL"},0
                         );
 //                dg.open();
                 switch(dg.open()) {
@@ -147,11 +148,6 @@ public class DetailDeviceView extends ViewPart implements ISaveablePart{
                     
                     break;
                 case 1:
-                    //no
-                    dg.close();
-                    
-                    break;
-                case 2:
                     //cancel
                     dg.close();
                     break;
@@ -267,7 +263,7 @@ public class DetailDeviceView extends ViewPart implements ISaveablePart{
             @Override
             public void modifyText(ModifyEvent event) {
                 if(isFirst == true){
-                    setDirty(true);
+                    setDirty(true );
                     detailToolItem.setEnabled(true);
                 }
             }
@@ -278,6 +274,8 @@ public class DetailDeviceView extends ViewPart implements ISaveablePart{
     }
     
     public void setData(Device device) {
+        isFirst = false;
+        setPartName(device.getName());
         List<Configure> configures = device.getConfigures();
         tableViewer.setInput(configures);
       
@@ -340,7 +338,5 @@ public class DetailDeviceView extends ViewPart implements ISaveablePart{
         this.isDirty = isDirty;
         firePropertyChange(PROP_DIRTY);
     }
-    public void setSaveAsAllowed(boolean isSaveAsAllowed) {
-        this.saveAsAllowed = isSaveAsAllowed;
-    }
+    
 }

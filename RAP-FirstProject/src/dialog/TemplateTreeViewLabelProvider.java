@@ -1,4 +1,4 @@
-package view.dialog;
+package dialog;
 
 
 import org.eclipse.jface.viewers.LabelProvider;

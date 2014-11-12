@@ -20,7 +20,8 @@ public class TemplatePerspective implements IPerspectiveFactory {
         topLeft.addView("RAP-FirstProject.areas");
         
         IFolderLayout bottomRight = layout.createFolder( "bottom", IPageLayout.BOTTOM,0.60f,editorArea );
-        bottomRight.addView("RAP-FirstProject.detailDeviceTemplateView");
+//        bottomRight.addView("RAP-FirstProject.detailDeviceTemplateView");
+        bottomRight.addPlaceholder("RAP-FirstProject.detailDeviceTemplateView:*");
         
         IFolderLayout topRight = layout.createFolder( "topRight",IPageLayout.RIGHT, 0.60f,editorArea );
         topRight.addView("RAP-FirstProject.devicesTemplatesView");

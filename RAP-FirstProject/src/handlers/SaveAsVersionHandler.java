@@ -64,6 +64,7 @@ public class SaveAsVersionHandler extends AbstractHandler {
                 
                 List<Device> listDevices = new ArrayList<Device>();
                 for (Device device : version.getDevices()){
+//                    device.setConfigures(configures);
                     device.setVersionBean(cloneVersion);
                     device.setIdDevice(0);
                     listDevices.add(device);

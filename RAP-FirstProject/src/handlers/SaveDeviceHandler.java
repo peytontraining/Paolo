@@ -38,27 +38,22 @@ public class SaveDeviceHandler extends AbstractHandler {
                 .getActiveWorkbenchWindowChecked(event);
         MessageDialog dg = new MessageDialog(
                 window.getShell(),
-                "My title",
+                "Save",
                 null,
-                "Save change",
+                "Do you want to change device?",
                 MessageDialog.QUESTION_WITH_CANCEL, 
                 new String[]{
                     "YES", 
-                    "NO", 
                     "CANCEL"},
                 0
                 );
-        dg.open();
+//        dg.open();
         switch(dg.open()) {
         case 0: 
             //yes
             System.out.println("yes");
             break;
         case 1:
-            //no
-            System.out.println("no");
-            break;
-        case 2:
             //cancel
             dg.close();
             System.out.println("cancel");

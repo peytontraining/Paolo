@@ -23,8 +23,6 @@ import org.eclipse.ui.dialogs.PatternFilter;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Section;
 
-import view.dialog.TemplateTreeViewContentProvider;
-import view.dialog.TemplateTreeViewLabelProvider;
 import view.project.TreeViewContentProvider;
 import view.project.TreeViewLabelProvider;
 import view.template.DeviceTemplateContentProvider;
@@ -45,6 +43,7 @@ public class AddDeviceTemplateDialog extends Dialog {
     public Device1 getDevice() {
         return device;
     }
+    
     /**
      *
      */

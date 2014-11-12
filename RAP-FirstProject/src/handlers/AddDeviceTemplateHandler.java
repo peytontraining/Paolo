@@ -13,9 +13,9 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.handlers.HandlerUtil;
 
-import view.dialog.NewDeviceView;
 import view.template.DetailDeviceTemplateView;
 import dialog.AddDeviceTemplateDialog;
+import dialog.NewDeviceView;
 
     public class AddDeviceTemplateHandler extends AbstractHandler {
     @Override

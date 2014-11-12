@@ -35,7 +35,6 @@ import entity.Equipment;
 import entity.Type;
 import entity.Version;
 
-
 public class ProjectPropertiesView extends ViewPart{
     static Text nameText;
     private Button gatewayUserButton1;
@@ -88,7 +87,41 @@ public class ProjectPropertiesView extends ViewPart{
                    equipmentModel.editEntity(equipment);
                    treeViewPart.treeViewer.refresh();
                } 
+               
+               if(element instanceof Equipment){
+                   equipment = (Equipment) element;
+                   type = equipment.getType();
+                   Equipment e = new Equipment();
+                   e.setNameEquipment(nameText.getText());
+                   e.setType(type);
+
+                   version = createNewVersion(equipment);
+                   List<Version> versions = new ArrayList<>();
+                   versions.add(version);
+                   e.setVersions(versions);
+                   type.getEquipments().add(e);
+                   equipmentModel.editEntity(e);
+                   treeViewPart.treeViewer.refresh();
+               }
+               
+               if(element instanceof Version){
+                   version = (Version) element;
+                   equipment = version.getEquipment();
+                   type = equipment.getType();
+                   Equipment e2 = new Equipment();
+                   e2.setNameEquipment(nameText.getText());
+                   e2.setType(type);
+                   
+                   version = createNewVersion(equipment);
+                   List<Version> versions = new ArrayList<>();
+                   versions.add(version);
+                   e2.setVersions(versions);
+                   type.getEquipments().add(e2);
+                   equipmentModel.editEntity(e2);
+                   treeViewPart.treeViewer.refresh();
+               }
             }
+            
             private Version createNewVersion(Equipment equipment) {
                 Calendar cal = Calendar.getInstance();
                 cal.set(2014, 10, 10, 15, 20, 30);
@@ -157,7 +190,6 @@ public class ProjectPropertiesView extends ViewPart{
         multiText = toolkit.createText(form.getBody(), "",SWT.MULTI | SWT.BORDER );
 //        multiText.setLayoutData( new RowData( 80, 60 ) );
 //        multiText.setLayoutData(new RowData(80, 60));
-        
     }
     
     @Override

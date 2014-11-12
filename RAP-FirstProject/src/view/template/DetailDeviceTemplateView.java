@@ -103,7 +103,7 @@ public class DetailDeviceTemplateView extends ViewPart{
         deviceDriverLabel = toolkit.createLabel(driverComposite, "");
         deviceDriverLabel.setLayoutData(new GridData(SWT.FILL, SWT.NONE, true, false));
         
-        selectDriverButton = toolkit.createButton(driverComposite, "Select Driver", SWT.PUSH);        
+        selectDriverButton = toolkit.createButton(driverComposite, "Select Driver", SWT.PUSH);
         selectDriverButton.setLayoutData(new GridData(SWT.RIGHT, SWT.NONE, true, false));
         
         //notesText
@@ -137,11 +137,12 @@ public class DetailDeviceTemplateView extends ViewPart{
     }
     
     public void setData(Device1 device) {
+        setPartName(device.getName1());
         nameText.setText(device.getName1());
         manufacturerText.setText(device.getManufacturer1());
         modelNumberText.setText(device.getModelNumber1());
         typesLabel.setText( device.getDeviceType().getNameDeviceType());
-        deviceDriverLabel.setText(device.getDriverBean().getNameDriver());        
+        deviceDriverLabel.setText(device.getDriverBean().getNameDriver());
         if(device.getNotes() == null){
             notesText.setText("");
         } else 

@@ -22,6 +22,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeColumn;
+import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
@@ -33,7 +34,7 @@ import view.project.DetailDeviceView;
 import entity.*;
 public class DevicesTemplatesTableView extends ViewPart implements IDoubleClickListener{
 //    public static final String ID  = "TreeTableDemo.view";
-    private TreeViewer m_treeViewer;
+    public TreeViewer m_treeViewer;
     private DeviceTemplateFilter filter;
     public static Text filterText;
     public static Text findText;
@@ -102,12 +103,6 @@ public class DevicesTemplatesTableView extends ViewPart implements IDoubleClickL
         versionColumn.setText("Version");
         versionColumn.setWidth(200);
         
-//        TreeColumn needsUpdateColumn = new TreeColumn(deviceTree, SWT.LEFT);
-//        deviceTree.setLinesVisible(true);
-//        needsUpdateColumn.setAlignment(SWT.LEFT);
-//        needsUpdateColumn.setText("Land/Stadt");
-//        needsUpdateColumn.setWidth(160);
-        
         m_treeViewer.setContentProvider(new DeviceTemplateContentProvider());
         m_treeViewer.setLabelProvider(new DeviceTemplateLabelProvider());
         
@@ -146,9 +141,12 @@ public class DevicesTemplatesTableView extends ViewPart implements IDoubleClickL
         Object firstObject = sselection.getFirstElement();
         if(firstObject instanceof Device1){
             try {
-                window.getActivePage().showView("RAP-FirstProject.detailDeviceTemplateView");
-                DetailDeviceTemplateView detailDeviceTemplateView = (DetailDeviceTemplateView) window.getActivePage().findViewReference("RAP-FirstProject.detailDeviceTemplateView").getView(true);
                 Device1 device = (Device1) firstObject;
+                String secondaryId = String.valueOf(device.getIdDevice1());
+                DetailDeviceTemplateView1 detailDeviceTemplateView = (DetailDeviceTemplateView1)window.getActivePage().showView("RAP-FirstProject.detailDeviceTemplateView", secondaryId, IWorkbenchPage.VIEW_ACTIVATE);
+//                window.getActivePage().showView("RAP-FirstProject.detailDeviceTemplateView");
+//                DetailDeviceTemplateView detailDeviceTemplateView = (DetailDeviceTemplateView) window.getActivePage().findViewReference("RAP-FirstProject.detailDeviceTemplateView").getView(true);
+                
                 detailDeviceTemplateView.setData(device);
             
 //            parent.setVisible(true);
